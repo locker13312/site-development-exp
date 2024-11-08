@@ -1,4 +1,3 @@
-// Sample product data (36 items)
 const products = [
     "Samsung Galaxy S21", "iPhone 13 Pro", "Xiaomi Mi 11", "OnePlus 9",
     "Google Pixel 6", "Huawei P40", "Sony Xperia 5", "Motorola Edge",
@@ -11,7 +10,6 @@ const products = [
     "Samsung Galaxy S20 FE", "iPhone 12", "Xiaomi Poco X3", "OnePlus 8T"
 ];
 
-// Function to render products
 function renderProducts(filter = "") {
     const productGrid = document.createElement("div");
     productGrid.classList.add("product-grid");
@@ -25,7 +23,7 @@ function renderProducts(filter = "") {
         productItem.classList.add("product-item");
 
         const productImage = document.createElement("img");
-        productImage.src = "https://via.placeholder.com/150"; // Placeholder image
+        productImage.src = "https://via.placeholder.com/150";
         productImage.alt = product;
 
         const productName = document.createElement("p");
@@ -41,7 +39,6 @@ function renderProducts(filter = "") {
     document.getElementById("content").appendChild(productGrid);
 }
 
-// Function to render home content
 function renderHome() {
     const homeSection = document.createElement("div");
     homeSection.classList.add("contact-section");
@@ -51,7 +48,6 @@ function renderHome() {
     document.getElementById("content").appendChild(homeSection);
 }
 
-// Function to render contact page
 function renderContact() {
     const contactSection = document.createElement("div");
     contactSection.classList.add("contact-section");
@@ -61,7 +57,6 @@ function renderContact() {
     document.getElementById("content").appendChild(contactSection);
 }
 
-// Navigation function
 function navigate(page) {
     if (page === 'home') {
         renderHome();
@@ -72,13 +67,11 @@ function navigate(page) {
     }
 }
 
-// Search function
 function searchProduct() {
     const searchInput = document.getElementById("search-input").value;
     renderProducts(searchInput);
 }
 
-// Initial load
 window.onload = () => {
     renderHome();
 };
