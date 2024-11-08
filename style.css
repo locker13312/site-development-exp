@@ -1,4 +1,3 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +5,19 @@
     font-family: Arial, sans-serif;
 }
 
-/* Body and Background */
 body {
-    background-color: #e0f7fa; /* Light blue background */
-    color: #1e3a8a; /* Dark blue text color */
+    background-color: #e0f7fa;
+    color: #1e3a8a;
 }
 
-/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1e3a8a; /* Dark blue header */
+    background-color: #1e3a8a;
     padding: 1rem;
     color: white;
-    border-radius: 0 0 10px 10px; /* Rounded corners on bottom */
+    border-radius: 0 0 10px 10px;
 }
 
 .logo {
@@ -38,10 +35,9 @@ nav a {
 }
 
 nav a:hover {
-    color: #039be5; /* Lighter blue on hover */
+    color: #039be5;
 }
 
-/* Search bar */
 .search-bar {
     display: flex;
     align-items: center;
@@ -71,19 +67,16 @@ nav a:hover {
     background-color: #039be5;
 }
 
-/* Main container */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* Content styles for dynamic sections */
 #content {
     margin-top: 2rem;
 }
 
-/* Product grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -118,7 +111,6 @@ nav a:hover {
     color: #1e3a8a;
 }
 
-/* Contact page styling */
 .contact-section {
     text-align: center;
     font-size: 1.1rem;
