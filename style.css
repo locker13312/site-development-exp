@@ -1,75 +1,130 @@
+/* Basic Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+/* Body and Background */
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f4f4f9;
-  color: #333;
+    background-color: #e0f7fa; /* Light blue background */
+    color: #1e3a8a; /* Dark blue text color */
 }
 
-.header {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  color: #fff;
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e3a8a; /* Dark blue header */
+    padding: 1rem;
+    color: white;
+    border-radius: 0 0 10px 10px; /* Rounded corners on bottom */
 }
 
-.header h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
 }
 
-.header p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-.button {
-  background-color: #fff;
-  color: #2575fc;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s;
+nav a:hover {
+    color: #039be5; /* Lighter blue on hover */
 }
 
-.button:hover {
-  background-color: #2575fc;
-  color: #fff;
+/* Search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
 }
 
-.about-section, .services-section {
-  padding: 60px 20px;
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
+.search-bar input[type="text"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #1e3a8a;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    width: 300px;
 }
 
-.services {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap;
+.search-bar button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.service {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  flex: 1 1 200px;
+.search-bar button:hover {
+    background-color: #039be5;
 }
 
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: #fff;
-  width: 100%;
+/* Main container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Content styles for dynamic sections */
+#content {
+    margin-top: 2rem;
+}
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.product-item {
+    background-color: white;
+    border: 1px solid #0288d1;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+.product-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+/* Contact page styling */
+.contact-section {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #1e3a8a;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
