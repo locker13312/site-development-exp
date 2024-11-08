@@ -1,45 +1,150 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Легкий сайт з великим дизайном</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display - Rozetka Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e9159;
+            padding: 1rem;
+            color: white;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        /* Search bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            width: 300px;
+        }
+        .search-bar button {
+            padding: 0.5rem;
+            font-size: 1rem;
+            background-color: #ffc107;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+        }
+        .product-name {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <h1>Вітаю на моєму сайті</h1>
-    <p>Це простий сайт з сучасним дизайном</p>
-    <a href="#about" class="button">Дізнатися більше</a>
-  </header>
 
-  <section id="about" class="about-section">
-    <h2>Про нас</h2>
-    <p>Цей розділ може містити інформацію про вас або ваш проект.</p>
-  </section>
-
-  <section id="services" class="services-section">
-    <h2>Наші послуги</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Послуга 1</h3>
-        <p>Опис першої послуги</p>
-      </div>
-      <div class="service">
-        <h3>Послуга 2</h3>
-        <p>Опис другої послуги</p>
-      </div>
-      <div class="service">
-        <h3>Послуга 3</h3>
-        <p>Опис третьої послуги</p>
-      </div>
+<!-- Header with logo and search bar -->
+<header>
+    <div class="logo">Rozetka</div>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Пошук назв продукту...">
+        <button onclick="searchProduct()">Знайти</button>
     </div>
-  </section>
+</header>
 
-  <footer class="footer">
-    <p>© 2024 Мій сайт. Всі права захищені.</p>
-  </footer>
+<!-- Main container for products -->
+<div class="container">
+    <div class="product-grid" id="product-grid">
+        <!-- Product items will be inserted here dynamically -->
+    </div>
+</div>
 
-  <script src="script.js"></script>
+<script>
+    // Sample product data (36 items)
+    const products = [
+        "Samsung Galaxy S21", "iPhone 13 Pro", "Xiaomi Mi 11", "OnePlus 9",
+        "Google Pixel 6", "Huawei P40", "Sony Xperia 5", "Motorola Edge",
+        "Nokia G50", "OPPO Reno6", "Realme GT", "Vivo V21",
+        "Asus ROG Phone 5", "Black Shark 4", "ZTE Axon 30", "TCL 20 Pro",
+        "Samsung Galaxy A52", "iPhone SE", "Xiaomi Redmi Note 10", "OnePlus Nord",
+        "Google Pixel 5a", "Huawei Mate 40", "Sony Xperia 10", "Motorola Moto G",
+        "Nokia X20", "OPPO A54", "Realme 8", "Vivo Y12",
+        "Asus Zenfone 8", "Blackview A80", "ZTE Blade A7", "TCL 10L",
+        "Samsung Galaxy S20 FE", "iPhone 12", "Xiaomi Poco X3", "OnePlus 8T"
+    ];
+
+    // Function to render products
+    function renderProducts(filter = "") {
+        const productGrid = document.getElementById("product-grid");
+        productGrid.innerHTML = ""; // Clear existing items
+        const filteredProducts = products.filter(product => 
+            product.toLowerCase().includes(filter.toLowerCase())
+        );
+        
+        filteredProducts.forEach(product => {
+            const productItem = document.createElement("div");
+            productItem.classList.add("product-item");
+
+            const productImage = document.createElement("img");
+            productImage.src = "https://via.placeholder.com/150"; // Placeholder image
+            productImage.alt = product;
+
+            const productName = document.createElement("p");
+            productName.classList.add("product-name");
+            productName.textContent = product;
+
+            productItem.appendChild(productImage);
+            productItem.appendChild(productName);
+            productGrid.appendChild(productItem);
+        });
+    }
+
+    // Initial render of products
+    renderProducts();
+
+    // Search function
+    function searchProduct() {
+        const searchInput = document.getElementById("search-input").value;
+        renderProducts(searchInput);
+    }
+</script>
+
 </body>
 </html>
