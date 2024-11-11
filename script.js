@@ -1,77 +1,37 @@
-const products = [
-    "Samsung Galaxy S21", "iPhone 13 Pro", "Xiaomi Mi 11", "OnePlus 9",
-    "Google Pixel 6", "Huawei P40", "Sony Xperia 5", "Motorola Edge",
-    "Nokia G50", "OPPO Reno6", "Realme GT", "Vivo V21",
-    "Asus ROG Phone 5", "Black Shark 4", "ZTE Axon 30", "TCL 20 Pro",
-    "Samsung Galaxy A52", "iPhone SE", "Xiaomi Redmi Note 10", "OnePlus Nord",
-    "Google Pixel 5a", "Huawei Mate 40", "Sony Xperia 10", "Motorola Moto G",
-    "Nokia X20", "OPPO A54", "Realme 8", "Vivo Y12",
-    "Asus Zenfone 8", "Blackview A80", "ZTE Blade A7", "TCL 10L",
-    "Samsung Galaxy S20 FE", "iPhone 12", "Xiaomi Poco X3", "OnePlus 8T"
-];
+angular.module('simpleApp', ['ngRoute'])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/home', {
+                templateUrl: 'components/home.html',
+                controller: 'HomeController'
+            })
+            .when('/products', {
+                templateUrl: 'components/products.html',
+                controller: 'ProductsController'
+            })
+            .when('/contact', {
+                templateUrl: 'components/contact.html',
+                controller: 'ContactController'
+            })
+            .otherwise({
+                redirectTo: '/home'
+            });
+    })
 
-function renderProducts(filter = "") {
-    const productGrid = document.createElement("div");
-    productGrid.classList.add("product-grid");
+    // Define controllers for each page
+    .controller('HomeController', function($scope) {
+        $scope.message = "Welcome to the Home Page!";
+    })
 
-    const filteredProducts = products.filter(product => 
-        product.toLowerCase().includes(filter.toLowerCase())
-    );
-    
-    filteredProducts.forEach(product => {
-        const productItem = document.createElement("div");
-        productItem.classList.add("product-item");
+    .controller('ProductsController', function($scope) {
+        $scope.message = "Check out our Products!";
+        $scope.products = [
+            { name: "Product 1", price: "$10" },
+            { name: "Product 2", price: "$20" },
+            { name: "Product 3", price: "$30" }
+        ];
+    })
 
-        const productImage = document.createElement("img");
-        productImage.src = "https://via.placeholder.com/150";
-        productImage.alt = product;
-
-        const productName = document.createElement("p");
-        productName.classList.add("product-name");
-        productName.textContent = product;
-
-        productItem.appendChild(productImage);
-        productItem.appendChild(productName);
-        productGrid.appendChild(productItem);
+    .controller('ContactController', function($scope) {
+        $scope.message = "Contact us for more information!";
     });
-
-    document.getElementById("content").innerHTML = "";
-    document.getElementById("content").appendChild(productGrid);
-}
-
-function renderHome() {
-    const homeSection = document.createElement("div");
-    homeSection.classList.add("contact-section");
-    homeSection.innerHTML = `<h2>Ласкаво просимо до Rozetka!</h2><p>Ваш найкращий онлайн-магазин електроніки.</p>`;
-    
-    document.getElementById("content").innerHTML = "";
-    document.getElementById("content").appendChild(homeSection);
-}
-
-function renderContact() {
-    const contactSection = document.createElement("div");
-    contactSection.classList.add("contact-section");
-    contactSection.innerHTML = `<h2>Контакти</h2><p>Зв'яжіться з нами: info@rozetka.com</p><p>Телефон: +380 123 456 789</p>`;
-
-    document.getElementById("content").innerHTML = "";
-    document.getElementById("content").appendChild(contactSection);
-}
-
-function navigate(page) {
-    if (page === 'home') {
-        renderHome();
-    } else if (page === 'products') {
-        renderProducts();
-    } else if (page === 'contact') {
-        renderContact();
-    }
-}
-
-function searchProduct() {
-    const searchInput = document.getElementById("search-input").value;
-    renderProducts(searchInput);
-}
-
-window.onload = () => {
-    renderHome();
-};
